@@ -1,7 +1,14 @@
+import axios from "axios";
 import HeroSection from "./_components/HeroSection";
 import InfoBlock from "./_components/InfoBlock";
 
-export default function Home() {
+export default async function Home() {
+  const response = await axios.get(
+    "http://127.0.0.1:1337/api/infoblocks-landing?populate=deep"
+  );
+
+  console.log(response.data.data.attributes.info_blocks.data);
+
   const heroHeadline = (
     <>
       <h1>barrel.</h1>
