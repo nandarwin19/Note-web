@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function HightlightArticle({ data }) {
   const { headline, excerpt, slug, featuredImage } = data;
-  console.log(featuredImage);
-  console.log(data);
+  // console.log(featuredImage);
+  // console.log(data);
 
   return (
     <article className="hightlight-article">

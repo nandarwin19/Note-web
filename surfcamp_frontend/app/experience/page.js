@@ -5,7 +5,7 @@ import InfoBlock from "./../_components/InfoBlock";
 export default async function Experience() {
   const data = await fetchDataFromStrapi("infoblocks-experience?populate=deep");
   const infoBlockData = processInfoBlocks(data);
-  console.log(infoBlockData);
+  // console.log(infoBlockData);
 
   const heroHeadline = (
     <>
