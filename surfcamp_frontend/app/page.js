@@ -2,6 +2,7 @@ import axios from "axios";
 import HeroSection from "./_components/HeroSection";
 import InfoBlock from "./_components/InfoBlock";
 import { fetchDataFromStrapi, processInfoBlocks } from "@/utils/strapi.utils";
+import BlogPreview from "./_components/BlogPreview/BlogPreview";
 
 export default async function Home() {
   const data = await fetchDataFromStrapi("infoblocks-landing?populate=deep");
@@ -23,8 +24,7 @@ export default async function Home() {
       {infoBlockData.map((data) => (
         <InfoBlock key={data.id} data={data} />
       ))}
-      {/* <InfoBlock data={infoBlockData} />
-      <InfoBlock data={{ ...infoBlockData, reversed: true }} /> */}
+      <BlogPreview />
     </main>
   );
 }

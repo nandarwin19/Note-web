@@ -1,3 +1,7 @@
+import ArticleComponent from "@/app/_components/Blog/ArticleComponent";
+import ArticleIntro from "@/app/_components/Blog/ArticleIntro";
+import ArticleOverview from "@/app/_components/Blog/ArticleOverview";
+import FeaturedItems from "@/app/_components/FeaturedItems/FeaturedItems";
 import { fetchBlogArticles, fetchDataFromStrapi } from "@/utils/strapi.utils";
 
 export default async function Page({ params }) {
@@ -5,11 +9,23 @@ export default async function Page({ params }) {
 
   const articles = await fetchBlogArticles();
   const article = articles.find((article) => article.slug === slug);
-  console.log(article);
+  // console.log(article);
+
+  const moreArticles = articles.filter((article) => article.slug !== slug);
 
   return (
     <main>
-      <h1>{article.headline}</h1>
+      <ArticleIntro article={article} />
+      <section className="article-section">
+        <ArticleOverview article={article} />
+        {article.articleContent.map((component) => (
+          <ArticleComponent key={component.id} component={component} />
+        ))}
+        <FeaturedItems
+          items={moreArticles}
+          headline={"Explore our other articles"}
+        />
+      </section>
     </main>
   );
 }
@@ -21,3 +37,5 @@ export default async function Page({ params }) {
 //     article: article.attributes.slug,
 //   }));
 // }
+
+export const revalidate = 300;
