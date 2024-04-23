@@ -1,10 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroSection({ imgSrc, headline, theme = "turquoise" }) {
   return (
     <section className="hero">
       <div className="hero__background">
-        <img src={imgSrc || "/assets/hero-home.png"} alt="hero" />
+        <Image
+          src={imgSrc || "/assets/hero-home.png"}
+          alt="hero"
+          width={500}
+          height={500}
+        />
       </div>
       <div className={`hero__headline hero__headline--${theme}`}>
         {headline || <h1>Headline missing</h1>}
@@ -12,7 +18,12 @@ export default function HeroSection({ imgSrc, headline, theme = "turquoise" }) {
       <button className="btn btn--medium btn--turquoise">
         <Link href="/events">BOOK NOW</Link>
       </button>
-      <img className="hero__logo" src="/assets/logo.svg" />
+      <Image
+        className="hero__logo"
+        src="/assets/logo.svg"
+        width={100}
+        height={100}
+      />
     </section>
   );
 }

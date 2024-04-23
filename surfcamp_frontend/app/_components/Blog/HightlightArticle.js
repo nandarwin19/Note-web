@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HightlightArticle({ data }) {
@@ -14,7 +15,13 @@ export default function HightlightArticle({ data }) {
           Read More
         </Link>
       </div>
-      <img className="hightlight-article__image" src={featuredImage} alt="" />
+      <Image
+        className="hightlight-article__image"
+        src={featuredImage}
+        alt=""
+        width={500}
+        height={500}
+      />
     </article>
   );
 }

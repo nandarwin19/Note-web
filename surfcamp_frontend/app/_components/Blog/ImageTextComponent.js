@@ -1,4 +1,5 @@
 import { extractImageUrl } from "@/utils/strapi.utils";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 
 export default function ImageTextComponent({ component }) {
@@ -17,7 +18,7 @@ export default function ImageTextComponent({ component }) {
       </ReactMarkdown>
       <div className="article-text-image__container">
         <div className="article-text-image__image">
-          <img src={extractImageUrl(image)} alt="" />
+          <Image src={extractImageUrl(image)} alt="" width={500} height={500} />
         </div>
         {imageCaption && (
           <p className="article-text-image__caption copy-small">
