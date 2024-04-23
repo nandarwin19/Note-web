@@ -1,26 +1,44 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function SubscribeToNewsletter() {
   const [email, setEmail] = useState("");
   const [hasSignedUp, setHasSignedUp] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   //   useEffect(() => {
   //     console.log(email);
   //   }, [email]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (email.length) {
+    try {
+      if (email.length) {
+        setHasSignedUp(true);
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/newsletter-signups`,
+          {
+            data: {
+              email,
+            },
+          }
+        );
+      }
       setHasSignedUp(true);
+    } catch (err) {
+      console.log(err);
+      setShowError(true);
     }
   };
 
   return (
     <section className="newsletter">
-      {hasSignedUp ? (
+      {showError ? (
+        <h4 className="newsletter__th">Could not sign up</h4>
+      ) : hasSignedUp ? (
         <h4 className="newsletter__thanks">Thank you for signing up!</h4>
       ) : (
         <>
