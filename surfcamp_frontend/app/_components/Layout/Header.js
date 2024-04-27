@@ -34,9 +34,6 @@ export default function Header() {
           </li>
         ))}
       </ul>
-      <Link href="/events">
-        <button className="btn btn--black btn--small">BOOK NOW</button>
-      </Link>
     </header>
   );
 }

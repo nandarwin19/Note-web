@@ -15,9 +15,7 @@ export default function HeroSection({ imgSrc, headline, theme = "turquoise" }) {
       <div className={`hero__headline hero__headline--${theme}`}>
         {headline || <h1>Headline missing</h1>}
       </div>
-      <button className="btn btn--medium btn--turquoise">
-        <Link href="/events">BOOK NOW</Link>
-      </button>
+
       <Image
         className="hero__logo"
         src="/assets/logo.svg"
